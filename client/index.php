@@ -52,7 +52,7 @@
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
             color: white;
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -90,7 +90,7 @@
 
         .btn-logout:hover {
             background: white;
-            color: #2e7d32;
+            color: #1565c0;
         }
 
         /* Container */
@@ -110,7 +110,7 @@
         }
 
         .welcome-section h2 {
-            color: #2e7d32;
+            color: #1565c0;
             margin-bottom: 15px;
         }
 
@@ -133,7 +133,7 @@
         .stat-number {
             font-size: 36px;
             font-weight: bold;
-            color: #4caf50;
+            color: #1976d2;
             margin-bottom: 10px;
         }
 
@@ -152,10 +152,10 @@
         }
 
         .section h3 {
-            color: #2e7d32;
+            color: #1565c0;
             margin-bottom: 20px;
             font-size: 22px;
-            border-bottom: 2px solid #4caf50;
+            border-bottom: 2px solid #42a5f5;
             padding-bottom: 10px;
         }
 
@@ -175,7 +175,7 @@
             text-align: left;
             font-weight: 600;
             color: #333;
-            border-bottom: 2px solid #4caf50;
+            border-bottom: 2px solid #42a5f5;
         }
 
         td {
@@ -206,7 +206,7 @@
 
         .badge-reussi {
             background: #c8e6c9;
-            color: #2e7d32;
+            color: #1565c0;
         }
 
         .badge-attente {
@@ -244,7 +244,7 @@
         }
 
         .btn-primary {
-            background: #4caf50;
+            background: #1976d2;
             color: white;
             padding: 10px 25px;
             border-radius: 5px;
@@ -255,7 +255,7 @@
         }
 
         .btn-primary:hover {
-            background: #45a049;
+            background: #1565c0;
         }
     </style>
 </head>

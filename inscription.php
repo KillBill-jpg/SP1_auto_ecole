@@ -7,7 +7,6 @@ $unControleur = new Controleur();
 $messageSucces = false;
 $messageErreur = "";
 
-// Traitement du formulaire
 if (isset($_POST['Inscription'])) {
     $email = $_POST['email'];
     $mdp = $_POST['mdp'];
@@ -18,17 +17,14 @@ if (isset($_POST['Inscription'])) {
     $adresse = $_POST['adresse'];
     $telephone = $_POST['telephone'];
     
-    // Vérifications
     if ($mdp != $mdp_confirm) {
         $messageErreur = "Les mots de passe ne correspondent pas.";
     } else {
-        // Vérifier si l'email existe déjà
         $userExist = $unControleur->verifierEmailExiste($email);
         
         if ($userExist) {
             $messageErreur = "Cet email est déjà utilisé. <a href='login.php'>Se connecter</a>";
         } else {
-            // 1. Créer le compte utilisateur
             $tabUser = array(
                 "email" => $email,
                 "mdp" => $mdp,
@@ -38,7 +34,6 @@ if (isset($_POST['Inscription'])) {
             );
             $unControleur->insert_user($tabUser);
             
-            // 2. Créer le candidat
             $tabCandidat = array(
                 "nomC" => $nom,
                 "prenomC" => $prenom,
@@ -61,7 +56,7 @@ if (isset($_POST['Inscription'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - CASTELLANE-AUTO</title>
+    <title>Inscription - Castellane-auto</title>
     <style>
         * {
             margin: 0;
@@ -227,7 +222,7 @@ if (isset($_POST['Inscription'])) {
         <div class="card">
             <?php if ($messageSucces): ?>
                 <div class="success-message">
-                    <h3>✅ Inscription réussie !</h3>
+                    <h3>Inscription réussie !</h3>
                     <p>Votre compte a été créé avec succès.</p>
                     <p>Vous pouvez maintenant vous connecter et réserver vos leçons.</p>
                     <a href="login.php" class="btn-submit" style="margin-top: 20px; display: inline-block; text-decoration: none;">
@@ -237,7 +232,7 @@ if (isset($_POST['Inscription'])) {
             <?php else: ?>
                 <?php if ($messageErreur): ?>
                     <div class="error-message">
-                        ❌ <?php echo $messageErreur; ?>
+                        <?php echo $messageErreur; ?>
                     </div>
                 <?php endif; ?>
 

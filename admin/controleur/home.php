@@ -3,274 +3,399 @@
 <head>
     <meta charset="UTF-8">
     <style>
+        /* ========================================
+        HOME - THÈME ROUGE BACK-OFFICE
+        ======================================== */
+    
+        /* PAGE TITLE */
+        .home-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #c62828;
+            margin-bottom: 5px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #c62828;
+            margin-bottom: 25px;
+        }
+    
+        .home-welcome {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+    
+        /* STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 0 0 25px 0;
+        }
+    
+        .stat-card {
+            background: linear-gradient(135deg, #c62828 0%, #d32f2f 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(198, 40, 40, 0.25);
+            transition: transform 0.3s;
+        }
+    
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+    
+        .stat-card:nth-child(2) {
+            background: linear-gradient(135deg, #b71c1c 0%, #c62828 100%);
+        }
+    
+        .stat-card:nth-child(3) {
+            background: linear-gradient(135deg, #8d1515 0%, #b71c1c 100%);
+        }
+    
+        .stat-card:nth-child(4) {
+            background: linear-gradient(135deg, #6d1010 0%, #8d1515 100%);
+        }
+    
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+    
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    
+        /* FILTRE */
         .filter-section {
             background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin: 20px 0;
+            padding: 18px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            border: 1px solid #f0f0f0;
         }
-        
-        .filter-section select {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+    
+        .filter-section label {
+            font-weight: 600;
+            color: #333;
             font-size: 14px;
-            margin-right: 10px;
         }
-        
+    
+        .filter-section select {
+            padding: 9px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 7px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            background: white;
+        }
+    
+        .filter-section select:focus {
+            outline: none;
+            border-color: #c62828;
+        }
+    
         .filter-section button {
-            padding: 8px 20px;
-            background: #4CAF50;
+            padding: 9px 22px;
+            background: linear-gradient(135deg, #c62828 0%, #d32f2f 100%);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 7px;
             cursor: pointer;
             font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(198,40,40,0.25);
         }
-        
+    
         .filter-section button:hover {
-            background: #45a049;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(198,40,40,0.35);
         }
-        
+    
         .filter-section .btn-reset {
-            background: #888;
+            background: #757575;
+            box-shadow: none;
         }
-        
+    
         .filter-section .btn-reset:hover {
-            background: #666;
+            background: #616161;
         }
-        
+    
+        /* INFO MONITEUR SÉLECTIONNÉ */
+        .moniteur-info {
+            background: #ffebee;
+            border: 1px solid #ef9a9a;
+            border-left: 4px solid #c62828;
+            padding: 10px 15px;
+            border-radius: 7px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #c62828;
+        }
+    
+        /* DASHBOARD LAYOUT */
         .dashboard {
             display: flex;
             gap: 20px;
-            margin: 20px 0;
+            margin: 0;
         }
-        
+    
+        /* CALENDRIER */
         .calendar-section {
             flex: 2;
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
         }
-        
-        .upcoming-section {
-            flex: 1;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            max-height: 600px;
-            overflow-y: auto;
-        }
-        
+    
         .calendar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
+    
         .calendar-nav {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
-        
+    
         .btn-nav {
-            padding: 8px 15px;
-            background: #4CAF50;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #c62828 0%, #d32f2f 100%);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 7px;
             cursor: pointer;
             text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
         }
-        
+    
         .btn-nav:hover {
-            background: #45a049;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(198,40,40,0.3);
+            color: white;
+            text-decoration: none;
         }
-        
+    
         .calendar-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
-            color: #333;
+            color: #c62828;
         }
-        
+    
+        /* LÉGENDE */
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+            font-size: 13px;
+            padding: 10px 15px;
+            background: #fafafa;
+            border-radius: 7px;
+            border: 1px solid #f0f0f0;
+        }
+    
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    
+        .legend-color {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+        }
+    
+        /* GRILLE CALENDRIER */
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-            margin-top: 20px;
+            gap: 4px;
+            margin-top: 15px;
         }
-        
+    
         .calendar-day-header {
             text-align: center;
-            font-weight: bold;
-            padding: 10px;
-            background: #f0f0f0;
-            border-radius: 4px;
+            font-weight: 700;
+            padding: 10px 5px;
+            background: linear-gradient(135deg, #c62828 0%, #d32f2f 100%);
+            color: white;
+            border-radius: 6px;
+            font-size: 13px;
         }
-        
+    
         .calendar-day {
-            min-height: 100px;
-            border: 1px solid #ddd;
+            min-height: 90px;
+            border: 1px solid #eeeeee;
             padding: 5px;
             background: white;
-            border-radius: 4px;
+            border-radius: 6px;
             position: relative;
+            transition: background 0.2s;
         }
-        
+    
+        .calendar-day:hover {
+            background: #fff5f5;
+        }
+    
         .calendar-day.other-month {
-            background: #f9f9f9;
-            color: #999;
+            background: #fafafa;
+            color: #bbb;
         }
-        
+    
         .calendar-day.today {
-            background: #e3f2fd;
-            border: 2px solid #2196F3;
+            background: #fff5f5;
+            border: 2px solid #c62828;
         }
-        
+    
         .day-number {
-            font-weight: bold;
-            margin-bottom: 5px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            font-size: 13px;
+            color: #444;
         }
-        
+    
+        .calendar-day.today .day-number {
+            color: #c62828;
+        }
+    
+        /* ÉVÉNEMENTS */
         .event-item {
             font-size: 10px;
-            padding: 3px 4px;
+            padding: 3px 5px;
             margin: 2px 0;
-            border-radius: 3px;
+            border-radius: 4px;
             cursor: pointer;
             overflow: hidden;
-            line-height: 1.2;
+            line-height: 1.3;
         }
-        
+    
         .event-lecon {
-            background: #bbdefb;
-            color: #1565c0;
+            background: #ffebee;
+            color: #c62828;
+            border-left: 3px solid #c62828;
         }
-        
+    
         .event-examen {
-            background: #ffccbc;
-            color: #d84315;
+            background: #b71c1c;
+            color: white;
             font-weight: bold;
         }
-        
+    
         .event-time {
             font-weight: bold;
             display: block;
         }
-        
+    
         .event-name {
             display: block;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        
+    
+        /* PROCHAINS ÉVÉNEMENTS */
+        .upcoming-section {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            max-height: 620px;
+            overflow-y: auto;
+            border: 1px solid #f0f0f0;
+        }
+    
+        .upcoming-section h3 {
+            color: #c62828;
+            font-size: 17px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #c62828;
+        }
+    
         .upcoming-item {
             padding: 12px;
-            margin: 10px 0;
-            border-left: 4px solid #4CAF50;
-            background: #f9f9f9;
-            border-radius: 4px;
+            margin: 8px 0;
+            border-left: 4px solid #c62828;
+            background: #ffebee;
+            border-radius: 6px;
+            transition: transform 0.2s;
         }
-        
+    
+        .upcoming-item:hover {
+            transform: translateX(3px);
+        }
+    
         .upcoming-item.examen {
-            border-left-color: #f44336;
+            background: #fff5f5;
+            border-left-color: #8d1515;
         }
-        
+    
         .upcoming-date {
             font-weight: bold;
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 5px;
+            color: #c62828;
+            font-size: 13px;
+            margin-bottom: 4px;
         }
-        
+    
         .upcoming-title {
             font-weight: bold;
             margin-bottom: 3px;
+            color: #333;
+            font-size: 14px;
         }
-        
+    
         .upcoming-details {
-            font-size: 13px;
+            font-size: 12px;
             color: #777;
         }
-        
-        .legend {
-            display: flex;
-            gap: 20px;
-            margin: 15px 0;
-            font-size: 14px;
+    
+        /* SCROLLBAR personnalisée */
+        .upcoming-section::-webkit-scrollbar {
+            width: 5px;
         }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+    
+        .upcoming-section::-webkit-scrollbar-track {
+            background: #f5f5f5;
         }
-        
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 3px;
+    
+        .upcoming-section::-webkit-scrollbar-thumb {
+            background: #c62828;
+            border-radius: 10px;
         }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .stat-card:nth-child(2) {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        .stat-card:nth-child(3) {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-        
-        .stat-card:nth-child(4) {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-        
-        .stat-number {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        
-        .stat-label {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        
-        .moniteur-info {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            font-weight: bold;
-            color: #856404;
+    
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .dashboard {
+                flex-direction: column;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
 
-<h1>Tableau de bord - Auto-école Castellane-Auto</h1>
-
-<p>Bonjour <?php echo $_SESSION['prenom'].' '.$_SESSION['nom']; ?> !</p>
+<h1>Tableau de bord</h1><br>
 
 <?php
 $nbCandidats = count($unControleur->selectAll_candidats());
@@ -399,7 +524,6 @@ if (isset($_GET['moniteur']) && $_GET['moniteur'] != '') {
         </div>
         
         <div class="calendar-grid">
-            <!-- En-têtes des jours -->
             <div class="calendar-day-header">Lun</div>
             <div class="calendar-day-header">Mar</div>
             <div class="calendar-day-header">Mer</div>

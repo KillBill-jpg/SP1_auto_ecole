@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - CASTELLANE-AUTO</title>
+    <title>Connexion - Castellane-auto</title>
     <style>
         * {
             margin: 0;
@@ -203,7 +203,7 @@
                 }
                 
             } else {
-                $erreur = "❌ Email ou mot de passe incorrect";
+                $erreur = "Email ou mot de passe incorrect";
             }
         }
         ?>
