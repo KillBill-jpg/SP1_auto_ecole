@@ -1,3 +1,30 @@
+<?php
+    $messageSucces = false;
+    $messageErreur = "";
+
+    if (isset($_POST['ValiderVehicule'])) {
+        $immat = $_POST['immat'];
+        
+        $vehiculeExiste = $unControleur->verifierImmatExiste($immat);
+        
+        if ($vehiculeExiste) {
+            $messageErreur = "Cette immatriculation existe déjà dans la base de données !";
+        } else {
+            $tab = array(
+                "immat" => $immat,
+                "date_Achat" => $_POST['date_Achat'],
+                "nb_km" => $_POST['nb_km'],
+                "energie" => $_POST['energie'],
+                "marque" => $_POST['marque'],
+                "modele" => $_POST['modele'],
+                "type_vehicule" => $_POST['type_vehicule']
+            );
+            $unControleur->insert_vehicule($tab);
+            $messageSucces = true;
+        }
+    }
+?>
+
 <h3>Ajout d'un véhicule</h3>
 
 <form method="post">
@@ -51,22 +78,18 @@
     </table>
 </form>
 
-<?php
-    if (isset($_POST['ValiderVehicule'])) {
-        $tab = array(
-            "immat" => $_POST['immat'],
-            "date_Achat" => $_POST['date_Achat'],
-            "nb_km" => $_POST['nb_km'],
-            "energie" => $_POST['energie'],
-            "marque" => $_POST['marque'],
-            "modele" => $_POST['modele'],
-            "type_vehicule" => $_POST['type_vehicule']
-        );
-        $unControleur->insert_vehicule($tab);
-        echo "<br><p style='color: green;'>Véhicule ajouté avec succès !</p>";
-        header("Refresh:1");
-    }
-?>
+    
+<?php if ($messageSucces): ?>
+    <div class="alert-success">
+        Le véhicule a été ajouté avec succès !
+    </div>
+<?php endif; ?>
+
+<?php if ($messageErreur): ?>
+    <div class="alert-error">
+        <?php echo $messageErreur; ?>
+    </div>
+<?php endif; ?>
 
 <hr>
 <h3>Liste des véhicules</h3>

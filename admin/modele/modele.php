@@ -329,6 +329,15 @@
             return $exec->fetch();
         }
 
+        
+        public function verifierImmatExiste($immat){
+            $requete = "select count(*) as nb from vehicule where immat = :immat;";
+            $exec = $this->unPdo->prepare($requete);
+            $exec->execute(array(':immat' => $immat));
+            $resultat = $exec->fetch();
+            return ($resultat['nb'] > 0);
+        }
+
                             /* gestion des lecons */
         
         public function insert_lecon($tab) {

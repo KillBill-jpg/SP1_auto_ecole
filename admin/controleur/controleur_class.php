@@ -129,6 +129,10 @@
             return $unVehicule;
         }
 
+        public function verifierImmatExiste($immat){
+            return $this->unModele->verifierImmatExiste($immat);
+        }
+
 
         /***************** gestion des leçons *****************/ 
 
