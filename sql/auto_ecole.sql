@@ -16,7 +16,7 @@ create table candidat (
     id_candidat int auto_increment,
     nomC varchar(50) not null,
     prenomC varchar(50) not null,
-    date_naissanceC DATE not null,
+    date_naissanceC date not null,
     adresseC varchar(100),
     telephoneC varchar(15),
     date_inscription date not null,
@@ -195,6 +195,119 @@ insert into examen values (null, 5, 1, 1, 'Code de la route',  'Centre d''examen
                           (null, 1, 1, 6, 'Conduite Permis A', 'Centre d''examen de Hyères',    '2026-06-13 10:00:00', 'En attente', 'Niveau moto tres correct'),
                           (null, 1, 1, 1, 'Conduite Permis B', 'Centre d''examen de Toulon',    '2026-06-25 10:00:00', 'En attente', 'Repassage si echec le 11'),
                           (null, 10, null, 'Code de la route','Centre d''examen de La Garde', '2026-07-05 09:00:00', 'En attente', 'Premier passage code');
+
+
+--Trigger pour le chevauchement des lecons
+
+delimiter //
+
+create trigger verif_chevauchement_lecon
+before insert on lecon
+for each row
+begin
+    declare fin_nouvelle datetime;
+    declare nb_conflit_candidat int;
+    declare nb_conflit_moniteur int;
+    declare nb_conflit_vehicule int;
+    
+    set fin_nouvelle = date_add(new.date_lecon, interval new.duree_lecon minute);
+    
+    select count(*) into nb_conflit_candidat
+    from lecon
+    where id_candidat = new.id_candidat
+      and id_lecon != ifnull(new.id_lecon, 0)
+      and new.date_lecon < date_add(date_lecon, interval duree_lecon minute)
+      and fin_nouvelle > date_lecon;
+    
+    if nb_conflit_candidat > 0 then
+        signal sqlstate '45000'
+        set message_text = 'ERREUR : Ce candidat a déjà une leçon sur ce créneau !';
+    end if;
+    
+    if new.id_moniteur is not null then
+        select count(*) into nb_conflit_moniteur
+        from lecon
+        where id_moniteur = new.id_moniteur
+          and id_lecon != ifnull(new.id_lecon, 0)
+          and new.date_lecon < date_add(date_lecon, interval duree_lecon minute)
+          and fin_nouvelle > date_lecon;
+        
+        if nb_conflit_moniteur > 0 then
+            signal sqlstate '45000'
+            set message_text = 'ERREUR : Ce moniteur est déjà occupé sur ce créneau !';
+        end if;
+    end if;
+    
+    if new.id_vehicule is not null then
+        select count(*) into nb_conflit_vehicule
+        from lecon
+        where id_vehicule = new.id_vehicule
+          and id_lecon != ifnull(new.id_lecon, 0)
+          and new.date_lecon < date_add(date_lecon, interval duree_lecon minute)
+          and fin_nouvelle > date_lecon;
+        
+        if nb_conflit_vehicule > 0 then
+            signal sqlstate '45000'
+            set message_text = 'ERREUR : Ce véhicule est déjà réservé sur ce créneau !';
+        end if;
+    end if;
+end//
+
+delimiter //
+
+create trigger verif_chevauchement_lecon_update
+before update on lecon
+for each row
+begin
+    declare fin_nouvelle datetime;
+    declare nb_conflit_candidat int;
+    declare nb_conflit_moniteur int;
+    declare nb_conflit_vehicule int;
+    
+    set fin_nouvelle = date_add(new.date_lecon, interval new.duree_lecon minute);
+    
+    select count(*) into nb_conflit_candidat
+    from lecon
+    where id_candidat = new.id_candidat
+      and id_lecon != new.id_lecon
+      and new.date_lecon < date_add(date_lecon, interval duree_lecon minute)
+      and fin_nouvelle > date_lecon;
+    
+    if nb_conflit_candidat > 0 then
+        signal sqlstate '45000'
+        set message_text = 'ERREUR : Ce candidat a déjà une leçon sur ce créneau !';
+    end if;
+    
+    if new.id_moniteur is not null then
+        select count(*) into nb_conflit_moniteur
+        from lecon
+        where id_moniteur = new.id_moniteur
+          and id_lecon != new.id_lecon
+          and new.date_lecon < date_add(date_lecon, interval duree_lecon minute)
+          and fin_nouvelle > date_lecon;
+        
+        if nb_conflit_moniteur > 0 then
+            signal sqlstate '45000'
+            set message_text = 'ERREUR : Ce moniteur est déjà occupé sur ce créneau !';
+        end if;
+    end if;
+    
+    if new.id_vehicule is not null then
+        select count(*) into nb_conflit_vehicule
+        from lecon
+        where id_vehicule = new.id_vehicule
+          and id_lecon != new.id_lecon
+          and new.date_lecon < date_add(date_lecon, interval duree_lecon minute)
+          and fin_nouvelle > date_lecon;
+        
+        if nb_conflit_vehicule > 0 then
+            signal sqlstate '45000'
+            set message_text = 'ERREUR : Ce véhicule est déjà réservé sur ce créneau !';
+        end if;
+    end if;
+end//
+
+delimiter ;                          
 
                         
 
