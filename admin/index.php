@@ -34,31 +34,31 @@
 
         <div class="nav-icons">
             <a href="index.php?page=1" class="nav-icon-link">
-                <img src="images/logoAutoEcole.png" alt="Accueil">
+                <img src="../images/accueil.jpg" alt="Accueil">
                 <span class="nav-icon-label">Accueil</span>
             </a>
             <a href="index.php?page=2" class="nav-icon-link">
-                <img src="images/candidat.png" alt="Candidats">
+                <img src="../images/candidat.jpg" alt="Candidats">
                 <span class="nav-icon-label">Candidats</span>
             </a>
             <a href="index.php?page=3" class="nav-icon-link">
-                <img src="images/moniteur.png" alt="Moniteurs">
+                <img src="../images/moniteur.jpg" alt="Moniteurs">
                 <span class="nav-icon-label">Moniteurs</span>
             </a>
             <a href="index.php?page=4" class="nav-icon-link">
-                <img src="images/vehicule.png" alt="Véhicules">
+                <img src="../images/vehicule.jpg" alt="Véhicules">
                 <span class="nav-icon-label">Véhicules</span>
             </a>
             <a href="index.php?page=5" class="nav-icon-link">
-                <img src="images/lecon.png" alt="Leçons">
+                <img src="../images/lecon.jpg" alt="Leçons">
                 <span class="nav-icon-label">Leçons</span>
             </a>
             <a href="index.php?page=6" class="nav-icon-link">
-                <img src="images/examen.png" alt="Examens">
+                <img src="../images/examen.jpg" alt="Examens">
                 <span class="nav-icon-label">Examens</span>
             </a>
             <a href="index.php?page=7" class="nav-icon-link">
-                <img src="images/demandes.png" alt="Demandes">
+                <img src="../images/demande.png" alt="Demandes">
                 <span class="nav-icon-label">Demandes</span>
             </a>
         </div>

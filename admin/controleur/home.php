@@ -450,7 +450,7 @@ $nbLeconsSemaine = count($unControleur->selectEvenements_prochains(7));
 if (isset($_GET['moniteur']) && $_GET['moniteur'] != '') {
     $moniteurSelectionne = $unControleur->selectWhere_moniteur($_GET['moniteur']);
     echo '<div class="moniteur-info">';
-    echo '📅 Planning de : '.$moniteurSelectionne['nomM'].' '.$moniteurSelectionne['prenomM'];
+    echo 'Planning de : '.$moniteurSelectionne['nomM'].' '.$moniteurSelectionne['prenomM'];
     echo '</div>';
 }
 ?>

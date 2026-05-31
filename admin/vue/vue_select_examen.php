@@ -52,24 +52,3 @@
         ?>
     </tbody>
 </table>
-
-<!-- <style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        margin-top: 20px;
-    }
-    th {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px;
-        text-align: left;
-    }
-    td {
-        padding: 8px;
-        border-bottom: 1px solid #ddd;
-    }
-    tr:hover {
-        background-color: #f5f5f5;
-    }
-</style> -->
