@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'client') {
+    if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'candidat') {
         header('Location: ../login.php');
         exit();
     }
@@ -17,7 +17,6 @@
         $erreurCandidat = true;
     } else {
         $id_candidat = $candidat['id_candidat'];
-        // Récupérer les prochaines leçons
         $prochaines_lecons = $unControleur->selectProchaines_lecons_candidat($id_candidat, 30);
         if ($prochaines_lecons === null) {
             $prochaines_lecons = array();
@@ -37,7 +36,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espace Client - CASTELLANE-AUTO</title>
+    <title>Espace Candidat - Castellane-auto</title>
     <style>
         * {
             margin: 0;

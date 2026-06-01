@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'client') {
+    if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'candidat') {
         header('Location: ../login.php');
         exit();
     }
