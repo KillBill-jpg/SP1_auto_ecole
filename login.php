@@ -197,7 +197,7 @@
                 if ($role == 'admin' || $role == 'moniteur') {
                     header('Location: admin/index.php');
                     exit();
-                } else if ($role == 'client') {
+                } else if ($role == 'candidat') {
                     header('Location: client/index.php');
                     exit();
                 }

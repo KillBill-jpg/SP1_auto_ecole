@@ -77,7 +77,7 @@ create table examen (
     foreign key (id_vehicule) references vehicule(id_vehicule)
 );
 
-insert into user values (null, 'admin@admin.fr', 'adminpass', 'Admin', 'Systeme', 'admin')
+insert into user values (null, 'admin@admin.fr', 'adminpass', 'Admin', 'Systeme', 'admin'),
                         (null, 'admin@castellane.fr', 'adminpass',     'Dupont', 'Marie',    'admin'),
                         (null, 'martin@castellane.fr', 'moniteur123',  'Martin', 'Pierre',   'moniteur'),
                         (null, 'bernard@castellane.fr', 'moniteur123',  'Bernard', 'Sophie',   'moniteur'),
@@ -101,10 +101,11 @@ insert into candidat values (null, 'Petit',   'Lucas',    '2005-04-12', '12 rue 
                             (null, 'Simon',   'Noah',     '2005-01-08', '8 boulevard Victor Hugo, La Garde','0611223303', '2025-10-01', 'Examen en cours'),
                             (null, 'Laurent', 'Jade',     '2003-11-30', '22 rue du Port, Hyères',           '0611223304', '2025-10-15', 'Examen en cours'),
                             (null, 'Michel',  'Léo',      '2004-03-17', '5 impasse des Roses, Toulon',      '0611223305', '2025-11-01', 'Diplome'),
-                            (null, 'Garcia',  'Chloé',    '2006-08-25', '18 rue Gambetta, La Garde',        '0611223306', '2026-01-10', 'En formation');
+                            (null, 'Garcia',  'Chloé',    '2006-08-25', '18 rue Gambetta, La Garde',        '0611223306', '2026-01-10', 'En formation'),
                             (null, 'Lopez', 'Santana', '1990-05-15', '123 Rue de la Paix, Paris', '0123456789', '2026-01-10', 'En formation'),
                             (null, 'Jones', 'Mercedes', '1995-08-20', '456 Avenue des Champs, Lyon', '0987654321', '2026-02-05', 'En formation'),
-                            (null, 'Hummel', 'Kurt', '1992-12-01', '789 Boulevard Saint-Michel, Marseille', '0112233445', '2026-03-15', 'En formation');
+                            (null, 'Hummel', 'Kurt', '1992-12-01', '789 Boulevard Saint-Michel, Marseille', '0112233445', '2026-03-15', 'En formation'),
+                            (null, 'Durand', 'Sophie', '2005-06-10', '10 rue des Fleurs, Toulon', '0611223307', '2025-09-20', 'En formation');
 
 insert into vehicule values (null, 'AB-247-CD', '2021-06-01', 42000, 'Essence',    'Peugeot', '207',   'Voiture'),
                             (null, 'EF-583-GH', '2021-06-01', 38500, 'Essence',    'Peugeot', '207',   'Voiture'),
