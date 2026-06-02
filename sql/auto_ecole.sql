@@ -30,7 +30,7 @@ create table moniteur (
     prenomM varchar(50) not null,
     emailM varchar(100) not null unique,
     telephoneM varchar(15),
-    date_embauche DATE not null,
+    date_embauche date not null,
     constraint pk_moniteur primary key (id_moniteur)
 );
 
