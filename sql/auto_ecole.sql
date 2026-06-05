@@ -95,7 +95,7 @@ insert into user values (null, 'admin@admin.fr', 'adminpass', 'Admin', 'Systeme'
 
 insert into moniteur values (null, 'Martin',  'Pierre',   'martin@castellane.fr',     '0612345601',   '2018-03-15'),
                             (null, 'Bernard', 'Sophie',   'bernard@castellane.fr',    '0612345602',   '2020-09-01'),
-                            (null, 'Leroy',   'Jacques',  'leroy@castellane.fr',      '0612345603',   '2022-01-10'),
+                            (null, 'Leroy',   'Jacques',  'leroy@castellane.fr',      '0612345603',   '2022-01-10');
 
 
 insert into candidat values (null, 'Petit',   'Lucas',    '2005-04-12', '12 rue des Lilas, Toulon',         '0611223301', '2025-09-01', 'En formation'),
